@@ -1,4 +1,4 @@
-// Firebase
+// Firebase to log data
 var config = {
     apiKey: "AIzaSyCl1mx1b_jeLmyUHNFc9-qwXznNdXXQbqw",
     authDomain: "lamuelapp.firebaseapp.com",
@@ -11,9 +11,10 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database().ref();
+
 // plugging in the current time
 $("#current-time").append(moment().format("hh:mm A"));
-
+// adding a new train to the database
 $("#addTrain").on("click", function () {
     event.preventDefault();
 
@@ -34,15 +35,6 @@ $("#addTrain").on("click", function () {
         frequency: frequency
     });
 
-
-    // database.push(newTrain);
-
-    // $("#train-name").val("");
-    // $("#destination-input").val("");
-    // $("#train-input").val("");
-    // $("#frequency-input").val("");
-
-    // return false;
 });
 
 
@@ -54,8 +46,7 @@ database.on("child_added", function (childSnapshot) {
     let trainFreq = data.frequency;
     let firstTrain = data.firstTrain;
     console.log(firstTrain);
-    // Calculate the minutes until arrival using hardcore math
-    // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time and find the modulus between the difference and the frequency  
+    // Calculate the minutes remaining until arrival
     let tRemainder = moment().diff(moment.unix(firstTrain), "minutes") % trainFreq;
     let tMinutes = trainFreq - tRemainder;
 

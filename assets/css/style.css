@@ -1,26 +1,8 @@
-#train-table {
-    border-collapse: collapse;
-    width: 100%;
-}
+/* .container {
+        background-color: RGBA(255,255,255,.8);
+        padding: 20px;
+    } */
 
-#train-table tr :hover {
-    background-color: black;
-}
-
-#train-table td,
-#train-table th {
-    border: 1px solid blue;
-}
-
-#train-table tr :nth-child(even) {
-    background-color: black;
-}
-
-#train-table th {
-    height: 50px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: blue;
-    color: white;
+body {
+    background-color: orange;
 }
